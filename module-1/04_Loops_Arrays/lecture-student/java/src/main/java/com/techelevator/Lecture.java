@@ -45,12 +45,12 @@ public class Lecture {
     6. Here, a variable is defined within a block. How can we get the value of that outside of the block in order to
        return it? There are a couple of different ways of doing this, what can you come up with?
     */
-    /*public int returnVariableFromBlock(int number) {
+    public int returnVariableFromBlock(int number) {
         int result1;
 
         { // A new block with scoped variables
 
-            int result1 = number * 5;
+             result1 = number * 5;
 
         } // the result variable disappears here
 
