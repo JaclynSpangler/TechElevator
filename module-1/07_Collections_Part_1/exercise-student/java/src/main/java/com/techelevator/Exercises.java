@@ -1,6 +1,9 @@
 package com.techelevator;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Exercises {
@@ -16,7 +19,11 @@ public class Exercises {
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
 	public List<String> array2List(String[] stringArray) {
-		return null;
+		List<String> anArrayList = new ArrayList<>();
+		for (String value : stringArray) {
+			anArrayList.add(value);
+		}
+		return anArrayList;
 	}
 
 	/*
@@ -25,8 +32,9 @@ public class Exercises {
 	 list2Array( ["Red", "Orange", "Yellow"] )  ->  {"Red", "Orange", "Yellow"}
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
-	public String[] list2Array(List<String> stringList) {
-		return null;
+	public String[] list2Array(List<String> stringList) {// same thing as above but turn List into an array
+		String[] newArray = stringList.toArray(new String[stringList.size()]);
+		return newArray;
 	}
 
 	/*
@@ -35,9 +43,21 @@ public class Exercises {
 	 no4LetterWords( {"Train", "Boat", "Car"} )  ->  ["Train", "Car"]
 	 no4LetterWords( {"Red", "White", "Blue"} )  ->  ["Red", "White"]
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
+
+	 return arraylist same strings but not if they have 4 characters
+	 make sure to convert array to list
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
-		return null;
+		List<String> fourLettersGone = new ArrayList<>();
+		for( String stringArrays : stringArray){
+			if(stringArrays.length() != 4){
+				fourLettersGone.add(stringArrays);
+			}
+		}
+
+
+
+		return fourLettersGone;
 	}
 
 	/*
@@ -47,7 +67,11 @@ public class Exercises {
 	 arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
-		return null;
+		List<Double> dividedByTwo = new ArrayList<>();
+		for(double value : intArray){
+			dividedByTwo.add(value / 2);
+		}
+		return dividedByTwo;
 	}
 
 	/*
@@ -57,7 +81,10 @@ public class Exercises {
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 64362
 	 */
 	public Integer findLargest(List<Integer> integerList) {
-		return null;
+		List<Integer> result = new ArrayList<>(integerList);
+		Collections.sort(result);
+		Collections.reverse(result);
+		return result.get(0);
 	}
 
 	/*
@@ -67,7 +94,14 @@ public class Exercises {
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-		return null;
+		List<Integer> onlyOdds = new ArrayList<Integer>();
+		for (Integer onlyOdd : integerArray) {
+			if (onlyOdd % 2 != 0) {
+				onlyOdds.add(onlyOdd);
+			}
+
+		}
+		return onlyOdds;
 	}
 
 	/*
@@ -76,9 +110,21 @@ public class Exercises {
 	 foundIntTwice( [5, 7, 9, 5, 11], 5 ) -> true
 	 foundIntTwice( [6, 8, 10, 11, 13], 8 -> false
 	 foundIntTwice( [9, 23, 44, 2, 88, 44], 44) -> true
-	 */
-	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
-		return false;
+	*/
+		public boolean foundIntTwice(List<Integer> integerList, int intToFind) {//return true if int value appears more than once
+			int count = 0;
+			boolean moreThanOne = false;
+			for(Integer twice : integerList){
+				if(intToFind == twice){
+					count = count + 1;
+				}
+			}
+			if(count >= 2){
+				moreThanOne = true;
+			}
+
+
+			return moreThanOne;
 	}
 
 	/*
@@ -95,7 +141,20 @@ public class Exercises {
 	 equals "1")
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		return null;
+
+		List<String> wordsAndNumbers = new ArrayList<>();
+		for (Integer number : integerArray) {
+			if (number % 3 == 0 && number % 5 == 0) {
+				wordsAndNumbers.add("FizzBuzz");
+			} else if (number % 3 == 0) {
+				wordsAndNumbers.add("Fizz");
+			} else if (number % 5 == 0) {
+				wordsAndNumbers.add("Buzz");
+			} else {
+				wordsAndNumbers.add(number.toString());
+			}
+		}
+		return wordsAndNumbers;
 	}
 
 	/*
@@ -106,7 +165,21 @@ public class Exercises {
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
+		List<Integer> newList = new ArrayList<>();
+		int sizeOfList = 0;
+
+
+		for(int i = 0; (i < listOne.size() || i < listTwo.size())	; i++) {
+			if(i < listOne.size()){
+				newList.add(listOne.get(i));
+			} if(i < listTwo.size()){
+				newList.add(listTwo.get(i));
+			}
+
+		}
+
+
+		return newList;
 	}
 
 }

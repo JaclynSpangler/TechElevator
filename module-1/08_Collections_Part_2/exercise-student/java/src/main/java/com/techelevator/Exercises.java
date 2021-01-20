@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class Exercises {
@@ -34,7 +35,25 @@ public class Exercises {
 	 *
 	 */
 	public String animalGroupName(String animalName) {
-		return null;
+		Map<String, String> groupNames = new HashMap<>();
+		groupNames.put("rhino", "Crash");
+		groupNames.put("giraffe", "Tower");
+		groupNames.put("elephant", "Herd");
+		groupNames.put("lion", "Pride");
+		groupNames.put("crow", "Murder");
+		groupNames.put("pigeon", "Kit");
+		groupNames.put("flamingo", "Pat");
+		groupNames.put("deer", "Herd");
+		groupNames.put("dog", "Pack");
+		groupNames.put("crocodile", "Float");
+		String inTheMap = "unknown";
+		String lowerCaseName = animalName.toLowerCase();
+
+		if (groupNames.containsKey(lowerCaseName)) {
+			inTheMap = groupNames.get(lowerCaseName);
+		}
+		return inTheMap;
+
 	}
 
 	/*
