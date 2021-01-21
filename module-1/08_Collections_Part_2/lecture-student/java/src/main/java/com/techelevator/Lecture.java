@@ -92,7 +92,7 @@ public class Lecture {
 
         return colors;
     }
-ge
+
     //9. addBonus({"Player 1"=5000,"Player 2"=2500,"Player 3"=4500}, 500)
     //         -> {"Player 1"=5500,"Player 2"=3000,"Player 3"=5000}//add bonus to every players score
     public void addBonus(Map<String,Integer> scores, int bonus) { //if return type is void then it means they want us to change the map and not return anything
@@ -113,7 +113,7 @@ ge
     //    mapAB({"b": "There"}) → {"b": "There"}
 
     public Map<String, String> mapAB(Map<String,String> input) {//dont need a loop because we are only worried about the keys a & b
-        if(input.containsKey("a") && input.containsKey("b"){
+        if(input.containsKey("a") && input.containsKey("b")){
             String combinedValue = input.get("a") + input.get("b"); //inputget means the values,not in themap yet
             input.put("ab", combinedValue);
 
