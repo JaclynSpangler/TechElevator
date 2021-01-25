@@ -12,14 +12,17 @@ public class Card {
     public static String shape = "Rectangle";
 
     public String getSuit() {
+
         return suit;
     }
 
     public String getRank() {
+
         return rank;
     }
 
     public boolean isFaceUp() {
+
         return faceUp;
     }
 

@@ -18,15 +18,18 @@ public class Card {
         this.suit = suit; //this. convention is referring to the first suit (this class' property, notclosestin scope)
     }*/
     public String getRank(){
+
         return rank;
     }
    /* public void setRank(String rank){
         this.rank = rank;
     }*/
     public boolean isFaceUp(){// is instead of get because it is a boolean
+
         return faceUp;
     }
     public void setFaceUp(boolean faceUp){
+
         this.faceUp = faceUp;
     }
     public String getDescription(){
@@ -71,6 +74,7 @@ public class Card {
     }
 
     public void flip(){
+
         faceUp = !faceUp;
     }
     public boolean isHigherThan(Card otherCard){

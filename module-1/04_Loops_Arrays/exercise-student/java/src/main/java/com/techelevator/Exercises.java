@@ -70,13 +70,7 @@ public class Exercises {
 	 sum3([7, 0, 0]) → 7
 	 */
 	public int sum3(int[] nums) {
-		int addThemUp = 0;
-		for( int i = 0; i < 4; i ++){
-			if (i == 3){
-				addThemUp = nums[0] + nums[1] + nums[2];
-			}
-		}
-		return addThemUp;
+		return nums[0] + nums[1] + nums[2];
 	}
 
 	/*

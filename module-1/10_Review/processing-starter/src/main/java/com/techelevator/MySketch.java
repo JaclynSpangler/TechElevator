@@ -11,7 +11,7 @@ public class MySketch extends PApplet {
 
     @Override
     public void setup() {
-        background(255);
+        background(255,0,0 );
     }
 
     @Override
