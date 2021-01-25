@@ -14,18 +14,22 @@ public class Airplane {
 
 
     public String getPlaneNumber() {
+
         return planeNumber;
     }
 
     public int getTotalFirstClassSeats() {
+
         return totalFirstClassSeats;
     }
 
     public int getBookedFirstClassSeats() {
+
         return bookedFirstClassSeats;
     }
 
     public int getTotalCoachSeats() {
+
         return totalCoachSeats;
     }
 
