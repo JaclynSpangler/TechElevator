@@ -1,6 +1,8 @@
 package com.techelevator.farm;
 
-public class FarmAnimal {
+import java.math.BigDecimal;
+
+public class FarmAnimal implements Singable, Sellable{
 	private final String name;
 
 	public FarmAnimal(String name) {
@@ -12,6 +14,13 @@ public class FarmAnimal {
 	}
 
 	public String makeSound() {
+		return null;
+	}
+
+	public String getArticle(){
+		return "a";
+	}
+	public BigDecimal getPrice(){
 		return null;
 	}
 
