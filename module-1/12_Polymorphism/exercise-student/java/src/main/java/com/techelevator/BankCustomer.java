@@ -26,7 +26,7 @@ public class BankCustomer implements Accountable{
         return phoneNumber;
     }
     public void setPhoneNumber(String phoneNumber){
-        this.phoneNumber =phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
     public Accountable[] getAccounts(){
         return accounts.toArray(new Accountable[0]);

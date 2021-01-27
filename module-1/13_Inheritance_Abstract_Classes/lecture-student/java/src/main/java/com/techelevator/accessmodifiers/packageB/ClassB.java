@@ -1,9 +1,12 @@
 package com.techelevator.accessmodifiers.packageB;
 
 
-public class ClassB {
+import com.techelevator.accessmodifiers.packageA.ClassA;
+
+public class ClassB extends ClassA {
 
    public boolean methodB() {
+       methodA();
        return true;
    }
 }

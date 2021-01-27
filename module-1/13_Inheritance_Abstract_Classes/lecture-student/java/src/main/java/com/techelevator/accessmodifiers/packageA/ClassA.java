@@ -3,7 +3,10 @@ package com.techelevator.accessmodifiers.packageA;
 
 public class ClassA {
 
-    public boolean methodA() {
+    protected boolean methodA() {
         return true;
+    }
+
+    void anotherMethodA(){
     }
 }
