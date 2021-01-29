@@ -44,7 +44,7 @@ public class Card {
     }
 
     public static int getValueForRank(String rank) {
-        Map<String,Integer> cardValues = new HashMap<>();
+        Map<String, Integer> cardValues = new HashMap<>();
         cardValues.put("Two", 2);
         cardValues.put("Three", 3);
         cardValues.put("Four", 4);
@@ -59,11 +59,20 @@ public class Card {
         cardValues.put("King", 13);
         cardValues.put("Ace", 14);
 
-        return cardValues.get(rank);
+        if (cardValues.containsKey(rank)) {
+            return cardValues.get(rank);
+        } else {
+            return 0;
+        }
     }
 
     public int getValue() {
         return getValueForRank(this.rank);
+    }
+
+    public double getHalfVaue(){
+        return getValueForRank(this.rank / 2.0);
+
     }
 
     public void flip() {
@@ -73,6 +82,7 @@ public class Card {
     public boolean isHigherThan(Card otherCard) {
         return this.getValue() > otherCard.getValue();
     }
+
 
 
 }
