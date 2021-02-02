@@ -16,7 +16,7 @@ public class Examples {
 		//examples.inspectFilesystem();
 		//examples.createDirectory();
 		//examples.createOrReplaceFile();
-		//examples.addToFile();
+		examples.addToFile();
 	}
 	
 	private String promptForString(String prompt) {
@@ -63,10 +63,8 @@ public class Examples {
     	String target = promptForString("Enter the path of the file to create or replace: ");
     	String content = promptForString("Enter content for the file: ");
 
-    	try {
-			PrintWriter writer = new PrintWriter(target);
+    	try (PrintWriter writer = new PrintWriter(target)){//try with resources, automatically adds close
     		writer.println(content);
-    		writer.close();
     		System.out.println("File has been created (or replaced).");
 		} catch (IOException e) {
     		System.out.println("Couldn't create or replace file.");
@@ -77,12 +75,10 @@ public class Examples {
 		String target = promptForString("Enter the path of the file to be added to: ");
 		String content = promptForString("Enter additional content for the file: ");
 
-		try {
-			FileOutputStream stream = new FileOutputStream(target, true);
-			PrintWriter writer = new PrintWriter(stream);
+		try (FileOutputStream stream = new FileOutputStream(target, true);
+			 PrintWriter writer = new PrintWriter(stream)){
+			//one extra step as above, not overwriting it
 			writer.println(content);
-			writer.close();
-			stream.close();
 			System.out.println("File has been added to.");
 		} catch (IOException e) {
 			System.out.println("Couldn't append to file.");
