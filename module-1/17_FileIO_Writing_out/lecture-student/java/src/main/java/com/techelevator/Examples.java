@@ -15,8 +15,8 @@ public class Examples {
 
 		//examples.inspectFilesystem();
 		//examples.createDirectory();
-		//examples.createOrReplaceFile();
-		examples.addToFile();
+		examples.createOrReplaceFile();
+		//examples.addToFile();
 	}
 	
 	private String promptForString(String prompt) {

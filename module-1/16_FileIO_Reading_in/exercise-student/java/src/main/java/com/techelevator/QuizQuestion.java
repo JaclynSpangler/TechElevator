@@ -14,7 +14,7 @@ public class QuizQuestion {
             return question;
         }
         public String getAnswer1() {
-            return getAnswer1();
+            return answer1;
         }
         public String getAnswer2() {
             return answer2;
