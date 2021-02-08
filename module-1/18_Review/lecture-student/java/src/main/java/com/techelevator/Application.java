@@ -13,7 +13,10 @@ import java.util.List;
 public class Application {
 	private static final String MENU_OPTION_LIST_INDEXED_FILES = "List files to be searched";
 	private static final String MENU_OPTION_PERFORM_SAMPLE_SEARCH = "Do a sample search";
-	private static final String[] MAIN_MENU_OPTIONS = {MENU_OPTION_LIST_INDEXED_FILES, MENU_OPTION_PERFORM_SAMPLE_SEARCH};
+	private static final String MENU_OPTION_PERFORM_SEARCH ="Search for a word or phrase";
+	private static final String MENU_OPTION_QUIT = "Quit the program";
+	private static final String[] MAIN_MENU_OPTIONS = {MENU_OPTION_LIST_INDEXED_FILES, MENU_OPTION_PERFORM_SAMPLE_SEARCH,
+			MENU_OPTION_PERFORM_SEARCH, MENU_OPTION_QUIT};
 
 	private static final String MENU_OPTION_SAMPLE_SEARCH_1 = "Search for 'squirrel'";
 	private static final String MENU_OPTION_SAMPLE_SEARCH_2 = "Search for 'telephone line'";
@@ -25,25 +28,32 @@ public class Application {
 	private SearchDomain searchDomain;
 	private SearchEngine searchEngine;
 
+	//main method creates instance (calling constructor) static if you dont have any instance variables available
 	public static void main(String[] args) {
 		Application application = new Application("data");
 		application.run();
 	}
 
-	public Application(String dataDirectory) {
+	public Application(String dataDirectory {
 		this.dataDirectory = dataDirectory;
 	}
 
-	public void run() {
+	public void run() {//writes out the log entry
 		TELog.log("Search application started");
-		prepareDomainAndEngine();
+		prepareDomainAndEngine();//calls another method!
+		boolean running = true;
 
-		while (true) {
-			String selection = ui.promptForSelection(MAIN_MENU_OPTIONS);
+		while (running) {
+			String selection = ui.promptForSelection(MAIN_MENU_OPTIONS);//ui=userinterface
 			if (selection.equals(MENU_OPTION_LIST_INDEXED_FILES)) {
-				displayIndexedFiles();
+				displayIndexedFiles();//method down below
 			} else if (selection.equals(MENU_OPTION_PERFORM_SAMPLE_SEARCH)) {
-				handleSearchMenu();
+				handleSearchMenu();//method down below
+			}else if(selection.equals(MENU_OPTION_PERFORM_SEARCH)) {
+				String text = ui.promptForString("What would you like to search for? ");//need user input, added prompt for string in menudrivencli
+				performSearch(text);
+			}else if (selection.equals(MENU_OPTION_QUIT)){
+				running = false;//added new entry to menu (above) then what do we do? added boolean var and then added else if
 			}
 		}
 	}
@@ -70,8 +80,7 @@ public class Application {
 
 	private void handleSearchMenu() {
 		String selection = ui.promptForSelection(SEARCH_MENU_OPTIONS);
-		if (selection.equals(MENU_OPTION_SAMPLE_SEARCH_1)) {
-			performSearch("squirrel");
+		prperformSearch("squirrel");
 		} else if (selection.equals(MENU_OPTION_SAMPLE_SEARCH_2)) {
 			performSearch("telephone line");
 		}
