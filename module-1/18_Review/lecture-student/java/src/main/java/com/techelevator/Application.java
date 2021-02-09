@@ -34,7 +34,7 @@ public class Application {
 		application.run();
 	}
 
-	public Application(String dataDirectory {
+	public Application(String dataDirectory) {
 		this.dataDirectory = dataDirectory;
 	}
 
@@ -80,7 +80,7 @@ public class Application {
 
 	private void handleSearchMenu() {
 		String selection = ui.promptForSelection(SEARCH_MENU_OPTIONS);
-		prperformSearch("squirrel");
+		performSearch("squirrel");
 		} else if (selection.equals(MENU_OPTION_SAMPLE_SEARCH_2)) {
 			performSearch("telephone line");
 		}
