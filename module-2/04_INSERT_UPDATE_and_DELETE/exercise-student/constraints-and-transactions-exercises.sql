@@ -92,6 +92,11 @@ VALUES (1001,1);
 INSERT INTO inventory(film_id, store_id)
 VALUES (1001,2);
 
+--insert into select
+INSERT INTO inventory(film_id, store_id)
+SELECT (
+        (SELE
+
 SELECT * 
 FROM inventory
 WHERE film_id = 1001;
