@@ -64,9 +64,9 @@ public class JdbcUserDao implements UserDao {
      */
     @Override
     public boolean isUsernameAndPasswordValid(String userName, String password) {
-        String sqlSearchForUser = "SELECT * FROM users WHERE UPPER(username) = '" + userName.toUpperCase() + "'";
+        String sqlSearchForUser = "SELECT * FROM users WHERE UPPER(username) = ?";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForUser);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchForUser, userName.toUpperCase());
         if (results.next()) {
             String storedSalt = results.getString("salt");
             String storedPassword = results.getString("password");
@@ -76,6 +76,9 @@ public class JdbcUserDao implements UserDao {
             return false;
         }
     }
+
+    //create a long in: ': INSERT INTO users(username, password, salt) VALUES (t, s,
+    //delete the table:
 
     /**
      * Get all of the users from the database.

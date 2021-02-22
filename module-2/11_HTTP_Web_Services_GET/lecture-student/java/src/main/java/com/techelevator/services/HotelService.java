@@ -8,34 +8,43 @@ import org.springframework.web.client.RestTemplate;
 public class HotelService {
 
     private final String API_BASE_URL;
-    private RestTemplate restTemplate = new RestTemplate();
+    private RestTemplate restTemplate = new RestTemplate();//what were going to use to make http requests and serializing it (stringifiying lol)
 
     public HotelService(String apiURL) {
         API_BASE_URL = apiURL;
     }
 
     public Hotel[] listHotels() {
-        return null;
+        //call api to get the list of hotels will use restTemplate
+        //getForObject(path to resource/api call, what i expect back
+
+        return restTemplate.getForObject(API_BASE_URL + "hotels", Hotel[].class);
+        //Hotel[].class = im expecting back an array of Hotels .class means its the class of something
     }
 
     public Review[] listReviews() {
-        return null;
+
+        return restTemplate.getForObject(API_BASE_URL + "reviews", Review[].class);
     }
 
     public Hotel getHotelById(int id) {
-        return null;
+        return restTemplate.getForObject(API_BASE_URL + "hotels/" + id, Hotel.class);
+
+        //because thats what the method is giving
     }
 
     public Review[] getReviewsByHotelId(int hotelID) {
-        return null;
+        return restTemplate.getForObject(API_BASE_URL +"hotels/" + hotelID + "/reviews", Review[].class);
     }
 
     public Hotel[] getHotelsByStarRating(int stars) {
-        return null;
+        return  restTemplate.getForObject(API_BASE_URL+ "hotels?stars=" + stars, Hotel[].class);
     }
 
     public City getWithCustomQuery(){
-        return null;
+
+
+        return restTemplate.getForObject("https://api.teleport.org/api/cities/geonameid:512851/", City.class);
     }
 
 }

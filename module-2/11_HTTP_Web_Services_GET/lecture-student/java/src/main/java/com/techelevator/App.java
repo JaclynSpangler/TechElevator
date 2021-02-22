@@ -1,11 +1,13 @@
 package com.techelevator;
 
+import com.techelevator.models.Hotel;
+import com.techelevator.models.Review;
 import com.techelevator.services.ConsoleService;
 import com.techelevator.services.HotelService;
 
 public class App {
 
-    private static final String API_BASE_URL = "http://localhost:3000/";
+    private static final String API_BASE_URL = "http://localhost:3000/";//running this server
 
     public static void main(String[] args) {
         int menuSelection = 999;
@@ -17,17 +19,25 @@ public class App {
         while (menuSelection != 0) {
             menuSelection = consoleService.printMainMenu();
             if (menuSelection == 1) {
-                System.out.println("Not implemented");
+                Hotel[] hotels = hotelService.listHotels();
+                consoleService.printHotels(hotels);
+
+
             } else if (menuSelection == 2) {
-                System.out.println("Not implemented");
+                //one line way of above
+                consoleService.printReviews(hotelService.listReviews());
             } else if (menuSelection == 3) {
-                System.out.println("Not implemented");
+               Hotel hotel = hotelService.getHotelById(1);
+                consoleService.printHotel(hotel);
+
             } else if (menuSelection == 4) {
-                System.out.println("Not implemented");
+               Review[] review = hotelService.getReviewsByHotelId(1);
+               consoleService.printReviews(review);
+
             } else if (menuSelection == 5) {
-                System.out.println("Not implemented");
+                consoleService.printHotels(hotelService.getHotelsByStarRating(3));
             } else if (menuSelection == 6) {
-                System.out.println("Not implemented - Create a custom Web API query here");
+                System.out.println(hotelService.getWithCustomQuery());
             } else if (menuSelection == 0) {
                 consoleService.exit();
             } else {

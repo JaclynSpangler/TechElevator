@@ -36,20 +36,26 @@ public class FlowerShopOrder {
         this.subtotal = subtotal;
     }
 
-    public BigDecimal deliveryTotal(boolean sameDayDelivery, String zipCode){
+    public BigDecimal deliveryTotal(boolean sameDayDelivery, String zipCode) {
         int zipCodeNumber = Integer.parseInt(zipCode);
         BigDecimal deliveryFee = new BigDecimal("0.00");
         BigDecimal sameDayFee = new BigDecimal("5.99");
-        sameDayDelivery = true;
 
-            if(zipCodeNumber >= 20000 && zipCodeNumber <= 29999 && sameDayDelivery) {
-                deliveryFee = new BigDecimal("3.99").add(sameDayFee);
-            }else if(zipCodeNumber >= 30000 && zipCodeNumber<= 39999 && sameDayDelivery) {
-                deliveryFee = new BigDecimal("6.99").add(sameDayFee);
-            }if(zipCodeNumber >=10000 && zipCodeNumber<= 19999 && sameDayDelivery){
-                deliveryFee = BigDecimal.ZERO;
-            }else{
-                deliveryFee = new BigDecimal("19.99");
+        if (zipCodeNumber >= 20000 && zipCodeNumber <= 29999) {
+            deliveryFee = new BigDecimal("3.99");
+            if (sameDayDelivery = true) {
+                deliveryFee = deliveryFee.add(sameDayFee);
+            }
+        } else if (zipCodeNumber >= 30000 && zipCodeNumber <= 39999) {
+            deliveryFee = new BigDecimal("6.99");
+            if (sameDayDelivery = true) {
+                deliveryFee = deliveryFee.add(sameDayFee);
+            }
+        }
+        if (zipCodeNumber >= 10000 && zipCodeNumber <= 19999) {
+            deliveryFee = BigDecimal.ZERO;
+        }{
+            deliveryFee = new BigDecimal("19.99");
         }
             return deliveryFee;
     }

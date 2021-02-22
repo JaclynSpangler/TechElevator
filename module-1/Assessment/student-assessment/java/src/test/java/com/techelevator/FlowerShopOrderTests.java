@@ -24,15 +24,15 @@ public class FlowerShopOrderTests {
     @Test
     public void deliveryTotal_returns_the_correct_delivery_fee_when_zipcode_between_20000_29999() {
         FlowerShopOrder sut = new FlowerShopOrder("flower", BigDecimal.TEN);
-        sut.deliveryTotal(true, "20000");
+        sut.deliveryTotal(true, "20001");
 
-        Assert.assertEquals(new BigDecimal("9.98"), sut.deliveryTotal(true, "20000"));
+        Assert.assertEquals(new BigDecimal("9.98"), sut.deliveryTotal(true, "20001"));
     }
 
     @Test
     public void deliveryTotal_returns_the_correct_delivery_fee_when_zipcode_between_30000_39999() {
         FlowerShopOrder sut = new FlowerShopOrder("flower", BigDecimal.TEN);
-        sut.deliveryTotal(true, "20000");
+        sut.deliveryTotal(true, "30000");
 
         Assert.assertEquals(new BigDecimal("12.98"), sut.deliveryTotal(true, "30000"));
     }
