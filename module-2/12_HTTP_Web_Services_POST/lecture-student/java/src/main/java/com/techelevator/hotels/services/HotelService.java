@@ -28,8 +28,26 @@ public class HotelService {
    * @return Reservation
    */
   public Reservation addReservation(String newReservation) {
-    // TODO: Implement method
-    return null;
+
+    Reservation reservation = makeReservation(newReservation);// makeReservation is explained down below
+    if(reservation == null){
+      return null;
+    }
+
+    //create the request to send to server(header & body)
+    HttpHeaders headers= new HttpHeaders();
+    //create a header and set the content to json
+    headers.setContentType(MediaType.APPLICATION_JSON);
+    //entity is the header and body that is being sent --> takes 2 parameters(what goes in the body, header)
+    HttpEntity<Reservation> entity= new HttpEntity<>(reservation,headers);
+    try {
+      reservation = restTemplate.postForObject(BASE_URL + "hotels/" + reservation.getHotelID() + "/resercations", entity, Reservation.class);
+    }catch (RestClientResponseException ex ){
+      console.printError(ex.getRawStatusCode()+ " : "+ ex.getStatusText());
+    } catch(ResourceAccessException ex){
+      console.printError(ex.getMessage());
+    }
+    return reservation;
   }
 
   /**
@@ -40,8 +58,23 @@ public class HotelService {
    * @return
    */
   public Reservation updateReservation(String CSV) {
-    // TODO: Implement method
-    return null;
+    Reservation reservation = makeReservation(CSV);
+    if(reservation == null){
+      return null;
+    }
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_JSON);
+    HttpEntity<Reservation> entity = new HttpEntity<>(reservation, headers);
+
+    try{
+      restTemplate.put(BASE_URL+ "reservations/"+ reservation.getId(), entity);
+    }catch (RestClientResponseException ex ){
+      console.printError(ex.getRawStatusCode()+ " : "+ ex.getStatusText());
+    } catch(ResourceAccessException ex){
+      console.printError(ex.getMessage());
+    }
+
+    return reservation;
   }
 
   /**
@@ -50,7 +83,13 @@ public class HotelService {
    * @param id
    */
   public void deleteReservation(int id) {
-    // TODO: Implement method
+    try {
+      restTemplate.delete(BASE_URL + "reservations/" + id);
+    } catch (RestClientResponseException ex) {
+      console.printError(ex.getRawStatusCode() + " : " + ex.getStatusText());
+    } catch (ResourceAccessException ex) {
+      console.printError(ex.getMessage());
+    }
   }
 
   /* DON'T MODIFY ANY METHODS BELOW */
