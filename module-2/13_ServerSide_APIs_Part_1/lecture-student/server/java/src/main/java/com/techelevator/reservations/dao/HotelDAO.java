@@ -11,5 +11,8 @@ public interface HotelDAO {
     void create(Hotel hotel);
 
     Hotel get(int id);
+    List<Hotel> filterByState(String state);
+    List<Hotel> filterByCity(String city);
+
 
 }

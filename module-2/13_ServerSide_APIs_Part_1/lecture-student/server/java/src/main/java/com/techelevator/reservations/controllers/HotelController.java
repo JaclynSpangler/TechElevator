@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@RestController
 public class HotelController {
 
     private HotelDAO hotelDAO;
@@ -40,5 +42,39 @@ public class HotelController {
     public Hotel get(@PathVariable int id) {
         return hotelDAO.get(id);
     }
+    //list all reservations
 
+    @RequestMapping( path= "/reservations", method = RequestMethod.GET)
+    public List<Reservation> getAllReservations(){
+        return reservationDAO.findAll();
+
+    }
+
+    //get reservation by id :)
+
+    @RequestMapping( path = "/reservations/{id}", method = RequestMethod.GET)
+    public Reservation getReservationById(@PathVariable int id){
+        return reservationDAO.get(id);
+    }
+
+    //get list of reservation by hotel
+    @RequestMapping(path = "/hotels/{id}/reservations", method = RequestMethod.GET)
+    public List<Reservation> getReservationForHotel(@PathVariable int id){
+        return reservationDAO.findByHotel(id);
+    }
+    //add new reservation
+    @RequestMapping(path= "/hotels/{id}/reservations", method = RequestMethod.POST)
+    public Reservation addReservation(@PathVariable int id, @RequestBody Reservation reservation){
+        return reservationDAO.create(reservation, id);
+    }
+    //filter id by city and state.. city optional
+
+    @RequestMapping(path = "/filter", method = RequestMethod.GET)
+    public List<Hotel> filterByCityAndState(@RequestParam String state, @RequestParam(required = false) String city){
+        if(city!=null){
+            return hotelDAO.filterByCity(city);
+        }else {
+            return hotelDAO.filterByState(state);
+        }
+    }
 }
