@@ -12,11 +12,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-
+@PreAuthorize("isAuthenticated()")//added to top to say the wholeeee controller has to be authenticated to get anywhere
 @RestController
 public class HotelController {
 
@@ -33,8 +34,15 @@ public class HotelController {
      *
      * @return a list of all hotels in the system
      */
+
+    @PreAuthorize("permitAll")
     @RequestMapping(path = "/hotels", method = RequestMethod.GET)
-    public List<Hotel> list() {
+    public List<Hotel> list(Principal principal) {
+        if(principal != null){
+            System.out.println(principal.getName());
+        }else{
+            System.out.println("Can't print the name because they aren't logged in.");
+        }
         return hotelDAO.list();
     }
 
@@ -114,10 +122,11 @@ public class HotelController {
      * @param id
      * @throws ReservationNotFoundException
      */
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/reservations/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable int id) throws ReservationNotFoundException {
-        auditLog("delete", id, "username");
+    public void delete(@PathVariable int id, Principal principal) throws ReservationNotFoundException {
+        auditLog("delete", id, principal.getName());
         reservationDAO.delete(id);
     }
 
@@ -129,10 +138,10 @@ public class HotelController {
      * @return a list of hotels that match the city & state
      */
     @RequestMapping(path = "/hotels/filter", method = RequestMethod.GET)
-    public List<Hotel> filterByStateAndCity(@RequestParam String state, @RequestParam(required = false) String city) {
+    public List<Hotel> filterByStateAndCity(@RequestParam String state, @RequestParam(required = false) String city, Principal principal) {
 
         List<Hotel> filteredHotels = new ArrayList<>();
-        List<Hotel> hotels = list();
+        List<Hotel> hotels = list(principal);
 
         // return hotels that match state
         for (Hotel hotel : hotels) {
@@ -162,7 +171,7 @@ public class HotelController {
      */
     private void auditLog(String operation, int reservation, String username) {
         System.out.println(
-                "User: " + username + "performed the operation: " + operation + "on reservation: " + reservation);
+                "User: " + username + "performed the operation: " + operation + " on reservation: " + reservation);
     }
 
 }
