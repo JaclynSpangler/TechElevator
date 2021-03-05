@@ -61,6 +61,31 @@ public class QuestionSqlDAO implements  QuestionDAO{
         return count==1; //we should update exactly one
     }
 
+    //what we did in class
+    @Override
+    public Question createQuestion(Question question) {
+        String sql ="INSERT INTO questions(title, question) "+
+                "VALUES(?,?) RETURNING question_id";
+        long id =jdbcTemplate.queryForObject(sql, Long.class, question.getTitle(), question.getQuestion());
+        question.setId(id);
+        return question;
+    }
+
+    @Override
+    public List<Question> filter(String title, String question){
+        String sql = "SELECT title, question_id, question FROM questions WHERE title ILIKE ? AND question ILIKE ? ";
+        title = "%"+ title + "%";
+        question = "%"+ question +"%";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, title, question);
+        while(results.next()){
+            Question q = mapRowToQuestion(results);
+            list.add(q);
+        }
+
+        return list;
+    }
+
     private Question mapRowToQuestion(SqlRowSet results) {
         Question q = new Question();
         q.setTitle(results.getString("title"));
