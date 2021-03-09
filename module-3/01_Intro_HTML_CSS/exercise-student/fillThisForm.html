@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is a Form</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <header>
+        <h1>What should Jac be interested in?</h1>
+        <p>You tell me!</p>
+    </header>
+    
+    <main>
+        <nav class="otherPage">
+            <a href="fanpage.html">Click *here* to see Jac's current interests.</a>
+        </nav>
+        <h2>Here's the form</h2>
+        <form method="POST" action="api/fillThisForm">
+        <div>
+            <label for="userName"> What is your name:</label>
+            <input id="userName" name="userName" type="text" required/>
+        </div>
+        <div>
+            <label for="emailAddress"> What is your email address:</label>
+            <input id="emailAddress" name="emailAddress" type="text" required/>
+        </div>
+        <div>
+            <label for="DOB"> When is your birthday:</label>
+            <input id="DOB" name="DOB" type="date"/>
+        </div>
+        <div>
+            <label for="faveColor"> What is your favorite color:</label>
+            <input id="faveColor" name="faveColor" type="text"/>
+        </div>
+        <div>
+            <label for="faveNumber"> What is your favorite number:</label>
+            <input id="faveNumber" name="faveNumber" type="number"/>
+        </div>
+        <div>
+            <label for="userName"> What is your name:</label>
+            <input id="userName" name="userName" type="text"/>
+        </div>
+        <div>
+            <label for="jacsNewInterst"> What should Jac be interested in next:</label>
+            <input id="jacsNewInterst" name="jacsNewInterst" type="text" required/>
+        </div>
+        <div>
+            <label for="correct">Is all of this information correct?</label>
+            <input id="correct" name="correct" type="checkbox"/>
+        </div>
+        <div>
+            <input type="submit"/>
+        </div>
+    </form>
+    </main>
+    
+</body>
+</html>
