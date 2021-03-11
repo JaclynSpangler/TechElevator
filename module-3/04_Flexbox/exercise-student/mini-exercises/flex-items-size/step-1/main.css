@@ -16,4 +16,9 @@ body {
   color: #fff;
   text-align: center;
   border: solid 1px #777;
+  flex-grow: 1;
+}
+.container{
+  display: flex;
+  flex-direction: row;
 }
