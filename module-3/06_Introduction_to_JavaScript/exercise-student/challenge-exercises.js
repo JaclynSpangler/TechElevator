@@ -11,6 +11,31 @@
 		iqTest("") → 0 // there are no numbers in the given set
         iqTest("2 2 4 6") → 0 // all numbers are even, therefore there is no position of an odd number
 */
+   function iqTest(string){
+      const givenNumber = string.split(' ');
+      let evenLocation= 0;
+      let oddLocation= 0;
+      let countEven= 0;
+      let countOdd=0
+      for(let i = 0; i < givenNumber.length; i++){
+          if(givenNumber[i]% 2== 0){
+              countEven++;
+          evenLocation = givenNumber.indexOf(givenNumber[i]);
+      }if(givenNumber[i]% 2== 1){
+          countOdd++;
+          oddLocation = givenNumber.indexOf(givenNumber[i]);
+      }
+  }
+  if(countOdd == 0){
+      return 0;
+  }if(countEven == 1){
+      return evenLocation + 1;
+  }if (countOdd == 1){
+     return oddLocation + 1;
+ }
+
+
+ }
 
 /*
 2. **titleCase** Write a function that will convert a string into title case, given an optional 
@@ -28,3 +53,17 @@ argument is unused.
 		titleCase('THE WIND IN THE WILLOWS', 'The In') // should return: 'The Wind in the Willows'
         titleCase('the quick brown fox') // should return: 'The Quick Brown Fox'
 */
+function titleCase(title, exceptions){
+    const minorWords = exceptions === undefined ? [] : exceptions.toLowerCase().split(' ');
+    let titleWords = title.toLowerCase().split(' ');
+
+
+    for(let i =0; i< titleWords.length; i++){
+        if(!minorWords.includes(titleWords[i]) || i ===0){
+            titleWords[i] = titleWords[i].charAt(0).toUpperCase()+ titleWords[i].slice(1);
+        }
+    }
+    return titleWords.join(' ');
+    
+
+}
