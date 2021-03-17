@@ -1,4 +1,4 @@
-const name = 'Cigar Parties for Dummies';
+const productName = 'Cigar Parties for Dummies';
 const description = 'Host and plan the perfect cigar party for all of your squirrelly friends.';
 const reviews = [
   {
@@ -38,7 +38,7 @@ const reviews = [
  */
 function setPageTitle() {
   const pageTitle = document.getElementById('page-title');
-  pageTitle.querySelector('.name').innerHTML = name;
+  pageTitle.querySelector('.name').innerHTML = productName;
 }
 
 /**
