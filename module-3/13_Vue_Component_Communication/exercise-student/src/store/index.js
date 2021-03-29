@@ -33,9 +33,13 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    FLIP_FAVORITED(state, reviewToChange) {
-      reviewToChange.favorited = ! reviewToChange.favorited;
+     SET_READ_STATUS(state, payload) {
+       payload.book.read = payload.value;
+    },
+    SAVE_BOOK(state, book) {
+      state.books.push(book);
     }
+
   },
   actions: {},
   modules: {},
