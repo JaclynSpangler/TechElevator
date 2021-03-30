@@ -7,7 +7,6 @@
         <button class="mark-read" v-on:click.prevent="setRead(true)" v-if=" ! book.read">Mark Read</button>
         <button class="mark-unread" v-on:click.prevent="setRead(false)" v-if="book.read">Mark Unread</button>
     </div>
-    <button v-if="enableAdd" v-on:click.prevent="addToReadingList(book)">Add to Reading List</button>
   </div>
 </template>
 
