@@ -1,3 +1,5 @@
+import TodoList from  './components/TodoList';
+
 <template>
   <div id="todo-app">
 
@@ -10,6 +12,7 @@
 export default {
   name: 'app',
   components: {
+    TodoList
 
   }
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>untitled</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+</project>
+
+        import java.io.*;
+        import java.math.*;
+        import java.security.*;
+        import java.text.*;
+        import java.util.*;
+        import java.util.concurrent.*;
+        import java.util.regex.*;
+
+        public class Solution {
+
+
+
+        private static final Scanner scanner = new Scanner(System.in);
+
+        public static void main(String[] args) {
+        String printedOut= "";
+        int N = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+        scanner. close();
+        if(N%2 ==1){
+        printedOut= "Weird";
+        }else if(N%2 == 0){
+        if(N >= 2 && N < 5){
+        printedOut= "Not Weird";
+        }else if(N >=6 && N<= 20){
+        printedOut="Weird";
+        }else if(N > 20){
+        printedOut="Not Weird";
+        }
+        }
+        return System.out.println(printedOut);
+
+        }
+        }

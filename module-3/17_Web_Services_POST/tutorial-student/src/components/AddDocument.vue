@@ -17,11 +17,13 @@
       <button type="submit" v-on:click="saveDocument()">Save Document</button>
     </div>
   </form>
+  
 </template>
 
 <script>
 import moment from "moment";
 import faker from "faker";
+import docsService from '@/services/DocService';
 
 const date = moment(new Date());
 
@@ -40,7 +42,15 @@ export default {
     };
   },
   methods: {
-    saveDocument() {},
+    saveDocument() {
+      docsService
+    .create(this.document)
+    .then((response) => {
+      if (response.status === 201) {
+        this.$router.push("/");
+      }
+    })
+    },
     cancel() {
       this.$router.push("/");
     }

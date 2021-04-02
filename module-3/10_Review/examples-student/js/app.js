@@ -75,7 +75,7 @@ function changeColor(event) {
     colorClass = 'purple';
     event.target.removeEventListener('click', changeColor)
     const theText = document.querySelector('div#colorChanger p')
-    theText.innerHTML = 'I like purple. Button is no longer listening.'
+    theText.innerText = 'I like purple. Button is no longer listening.'
     theText.classList.add('bigFont')
   } else if (random < .8) {
     colorClass = 'red';

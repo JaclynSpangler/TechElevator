@@ -38,6 +38,7 @@ function displayGroceries() {
 }
 
 
+
 //begining 
 document.addEventListener('DOMContentLoaded', () => {
   setPageTitle();

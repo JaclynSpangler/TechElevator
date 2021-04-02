@@ -27,6 +27,9 @@ function printToConsole(value) {
  * @param {number} firstParameter the first parameter to multiply
  * @param {number} secondParameter the second parameter to multiply
  */
+function printToConsole(firstParameter, secondParameter){
+  return firstParameter* secondParameter;
+}
 
 /**
  * This version makes sure that no parameters are ever missing. If
@@ -38,7 +41,9 @@ function printToConsole(value) {
  * @param {number} [firstParameter=0] the first parameter to multiply
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
-
+function multiplyNoUndefined(firstParameter= 0, secondParameter= 0){
+  return firstParameter* secondParameter;
+}
 
  
 /**
@@ -86,7 +91,14 @@ function scopeTest() {
     console.log("This won't print!");
   }
 }
-
+/**
+ * 
+ * @param {string} name the name of the person we're describing 
+ * @param {number} age the age of the person 
+ * @param {string[]} listOfQuirks [listofQuirks] is a list of funny quirks
+ * @param {string} separator the string to separate the quirks by (,default) 
+ * @returns {string} a funny senntance about the person
+ */
 function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') {
   let description = `${name} is currently ${age} years old. Their quirks are: `;
   return description + listOfQuirks.join(separator);
@@ -100,7 +112,7 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @returns {number} sum of all the numbers
  */
 function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+  return numbersToSum.reduce( (acc, current)=> acc+current,0);
 }
 
 /**
@@ -111,4 +123,48 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+function allDivisibleByThree(numbersToFilter) {
+return numbersToFilter.filter((number)=> number % 3 ==0);
+
+}
+
+//foreach element in the array, print a new line
+/**
+ * 
+ * @param {[] generic array} array 
+ */
+function demoForEachWithIndex(array){
+array.forEach((item, index)=> {
+  console.log('Item at index ' + index+ ' is ' + item);
+})
+}
+/**
+ * return new array with all values double
+ * @param {number[]} nums 
+ * @returns {numbers[]} a new array with all of the element in nums doubled
+ */
+function doubleAllArrayValues(nums){
+  return nums.map((num)=> num * 2);
+}
+
+/**
+ * return new array with even indexes double
+ * @param {number[]} nums 
+ * @returns {numbers[]} a new array elements at even indexes are doubled, odd indexes are not 
+ */
+ function doubleEvenIndexArrayValues(nums){
+  return nums.map((num, index)=> {
+    if(index % 2 ==0){
+    return num * 2;
+  }
+  return num;
+  });
+}
+/**
+ * find student named dan and return it
+ * @param {string[]} students 
+ * @return {string} find dan
+ */
+function findDan(students){
+  return students.find((student) => student == 'Dan');
+}
